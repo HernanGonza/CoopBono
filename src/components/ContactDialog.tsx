@@ -31,7 +31,7 @@ export default function ContactDialog({ children }: { children: ReactNode }) {
 
   return <Dialog open={open} onOpenChange={onOpenChange}>
     <DialogTrigger asChild>{children}</DialogTrigger>
-    <DialogContent>
+    <DialogContent className="max-w-xl gap-3 p-5 sm:p-6">
       {status === 'sent' ? <div className="success-state">
         <CheckCircle2 size={42} aria-hidden="true" />
         <DialogTitle asChild><h3>¡Mensaje enviado!</h3></DialogTitle>
@@ -42,16 +42,16 @@ export default function ContactDialog({ children }: { children: ReactNode }) {
           <DialogTitle>Coordinar una reunión</DialogTitle>
           <DialogDescription>Contanos quién sos y cuándo te viene bien. Te respondemos desde hola@tacuara.com.ar.</DialogDescription>
         </DialogHeader>
-        <form className="grid gap-5 mt-2" onSubmit={submit}>
+        <form className="grid gap-3.5 sm:grid-cols-2 [&_textarea]:min-h-[72px]" onSubmit={submit}>
           <label className="field">Nombre y apellido<input name="nombre" required maxLength={120} autoComplete="name" /></label>
           <label className="field">Correo electrónico<input name="email" type="email" required maxLength={200} autoComplete="email" /></label>
-          <label className="field">Organismo o cargo <span className="font-normal text-muted-foreground">(opcional)</span><input name="organismo" maxLength={160} autoComplete="organization" /></label>
-          <label className="field">Mensaje<textarea name="mensaje" required maxLength={5000} placeholder="Ej.: nos gustaría ver la demo la semana próxima." /></label>
+          <label className="field sm:col-span-2"><span>Organismo o cargo <span className="font-normal text-muted-foreground">(opcional)</span></span><input name="organismo" maxLength={160} autoComplete="organization" /></label>
+          <label className="field sm:col-span-2">Mensaje<textarea name="mensaje" rows={2} required maxLength={5000} placeholder="Ej.: nos gustaría ver la demo la semana próxima." /></label>
           <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }}>
             <label>No completar<input name="web" tabIndex={-1} autoComplete="off" /></label>
           </div>
-          <Button type="submit" size="proposal" disabled={status === 'sending'}>{status === 'sending' ? 'Enviando…' : <>Enviar mensaje <ArrowRight /></>}</Button>
-          <p role="status" aria-live="polite" className="demo-subtitle">{status === 'error' && 'No pudimos enviarlo. Probá de nuevo o escribinos a hola@tacuara.com.ar.'}</p>
+          <Button type="submit" size="proposal" className="sm:col-span-2" disabled={status === 'sending'}>{status === 'sending' ? 'Enviando…' : <>Enviar mensaje <ArrowRight /></>}</Button>
+          <p role="status" aria-live="polite" className="demo-subtitle !mt-0 sm:col-span-2 empty:hidden">{status === 'error' && 'No pudimos enviarlo. Probá de nuevo o escribinos a hola@tacuara.com.ar.'}</p>
         </form>
       </>}
     </DialogContent>
