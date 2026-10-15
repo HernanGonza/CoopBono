@@ -7,6 +7,7 @@ describe("App", () => {
   it("renders the proposal", () => {
     render(<App />);
 
-    expect(screen.getAllByText(/Plataforma CoopBono/).length).toBeGreaterThan(0);
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toMatch(/CoopBono 2027/);
+    expect(screen.getAllByText("hola@tacuara.com.ar").length).toBeGreaterThan(0);
   });
 });
