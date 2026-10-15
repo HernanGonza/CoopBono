@@ -315,7 +315,7 @@
 .grid-frame.dark { margin-top:44px; border-color:color-mix(in oklab, var(--deep-foreground) 55%, transparent); background:transparent; padding:36px; }
 .contact-card.grid-frame { background:var(--card); padding:56px; }
 .section-solution .grid-frame { background:color-mix(in oklab, var(--background) 60%, transparent); }
-.grid-frame .timeline { margin-top:0; padding:22px 14px 8px; }
+.grid-frame .timeline { margin-top:0; padding:22px 14px 48px; }
 .grid-frame .tech-grid { margin-top:0; padding:14px 18px 20px; }
 .grid-frame .tech-item:nth-child(-n+3) { border-top:0; padding-top:6px; }
 .grid-frame .demo-shell { box-shadow:none; }
