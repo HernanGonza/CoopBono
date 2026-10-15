@@ -1,29 +1,24 @@
-# Welcome to your Lovable project
+# Plataforma CoopBono
 
-This project was built with [Lovable](https://lovable.dev).
+Propuesta comercial con demo interactiva para las cooperativas escolares de Misiones.
 
-## Build with Lovable
-
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Desarrollo
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
 
-## Built with
+## Scripts
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+- `npm run build`: chequeo de tipos y build de producción en `dist/`
+- `npm run preview`: sirve el build localmente
+- `npm test`: tests con Vitest
+
+## Despliegue en Vercel
+
+Importá el repositorio en Vercel: detecta Vite automáticamente (`vercel.json` fija build y carpeta `dist`). No requiere variables de entorno.
+
+## Stack
+
+Vite, React, TypeScript, Tailwind CSS, Recharts y Leaflet.

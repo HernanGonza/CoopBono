@@ -1,5 +1,4 @@
 import { lazy, Suspense, useState } from 'react';
-import { ClientOnly } from '@tanstack/react-router';
 import { Sprout, LayoutDashboard, School, ClipboardList, FileCheck2, Info, Plus, ArrowRight, ArrowLeft, Check, CheckCircle2, Upload, Trash2, FileText, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -94,11 +93,11 @@ function MinisterDashboard() {
   return <>
     <div className="demo-title-row"><div><h3 className="demo-title">Una mirada a toda la provincia</h3><p className="demo-subtitle">CoopBono 2027 · Corte de ejemplo: agosto 2027</p></div><Button size="sm" variant="outline" onClick={exportCSV} title="Exportar datos ficticios"><Download /> CSV</Button></div>
     <div className="kpi-grid">{[{ label:'Cooperativas registradas',value:dashboard.registered },{label:'Proyectos presentados',value:dashboard.presented},{label:'Monto adjudicado',value:currency(dashboard.awarded)},{label:'Monto rendido',value:`${dashboard.renderedPercent}%`}].map(kpi => <div key={kpi.label}><div className="mini-label">{kpi.label}</div><div className="kpi-value">{kpi.value}</div></div>)}</div>
-    <ClientOnly fallback={<p className="demo-subtitle">Cargando información territorial…</p>}><div className="charts-grid">
+    <div className="charts-grid">
       <div className="chart-block"><h4>Proyectos por municipio</h4><ResponsiveContainer width="100%" height={260}><BarChart data={municipalities} layout="vertical" margin={{left:0,right:15}}><CartesianGrid stroke="var(--border)" horizontal={false} /><XAxis type="number" tick={{fontSize:10,fill:'var(--muted-foreground)'}} axisLine={false} tickLine={false} /><YAxis type="category" dataKey="name" width={95} tick={{fontSize:9,fill:'var(--muted-foreground)'}} axisLine={false} tickLine={false} /><Tooltip /><Bar name="Proyectos" dataKey="projects" fill="var(--primary)" radius={[0,3,3,0]} barSize={14} /></BarChart></ResponsiveContainer></div>
       <div className="chart-block"><h4>Proyectos por tipo</h4><ResponsiveContainer width="100%" height={225}><PieChart><Pie data={projectTypes} dataKey="value" nameKey="name" innerRadius={55} outerRadius={90} paddingAngle={3}>{projectTypes.map((entry,i) => <Cell key={entry.name} fill={chartColors[i]} stroke="var(--card)" />)}</Pie><Tooltip /></PieChart></ResponsiveContainer><div className="chart-legend">{projectTypes.map((t,i) => <span key={t.name}><i className="legend-dot" data-color={i} />{t.name} ({t.value})</span>)}</div></div>
       <div className="chart-block"><h4>Monto adjudicado vs. rendido · millones de ARS</h4><ResponsiveContainer width="100%" height={260}><LineChart data={monthlyAmounts} margin={{left:-20,right:10,top:10}}><CartesianGrid stroke="var(--border)" strokeDasharray="3 3" /><XAxis dataKey="month" tick={{fontSize:10,fill:'var(--muted-foreground)'}} /><YAxis tick={{fontSize:10,fill:'var(--muted-foreground)'}} /><Tooltip formatter={value => `${value} millones ARS`} /><Line type="monotone" dataKey="adjudicado" name="Adjudicado" stroke="var(--primary)" strokeWidth={2} /><Line type="monotone" dataKey="rendido" name="Rendido" stroke="var(--earth)" strokeWidth={2} /></LineChart></ResponsiveContainer><div className="chart-legend"><span><i className="legend-dot" />Adjudicado</span><span><i className="legend-dot" data-color="1" />Rendido</span></div></div>
       <div className="chart-block"><h4>Presencia territorial · cooperativas por municipio</h4><Suspense fallback={<div className="misiones-map bg-muted" />}><MisionesMap /></Suspense></div>
-    </div></ClientOnly>
+    </div>
   </>;
 }
