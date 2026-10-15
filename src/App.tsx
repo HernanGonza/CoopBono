@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowRight, Play, Menu, X, MapPin, FileStack, Route as RouteIcon, ScanSearch, School, ClipboardList, FileCheck2, Wallet, ReceiptText, ChartNoAxesCombined, Check, Server, Download, ShieldCheck, Smartphone, DatabaseBackup, Handshake, Mail, Globe, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CoopBonoDemo from '@/components/CoopBonoDemo';
+import ContactDialog from '@/components/ContactDialog';
 import schoolImage from '@/assets/coopbono-escuela.jpg';
 import markUrl from '@/assets/tacuara-mark-bn-96.webp';
 import { stages } from '@/lib/mockData';
@@ -9,7 +10,6 @@ import { stages } from '@/lib/mockData';
 const SITE_URL = 'https://www.tacuara.com.ar';
 const SITE_LABEL = 'www.tacuara.com.ar';
 const EMAIL = 'hola@tacuara.com.ar';
-const MAIL_SUBJECT = 'Reuni%C3%B3n%20sobre%20Plataforma%20CoopBono%202027';
 
 const navigation = [{label:'Solución',id:'solucion'},{label:'Demo',id:'demo'},{label:'Implementación',id:'implementacion'}];
 const challenges = [
@@ -86,7 +86,7 @@ export default function App() {
       <section className="section" id="tecnologia"><div className="site-container"><div className="section-heading"><div><div className="eyebrow">06 / Tecnología y datos</div><h2>Simple por fuera.<br /><em>Confiable por dentro.</em></h2></div><p>Una solución adaptable a la infraestructura provincial, con autonomía sobre los datos.</p></div><div className="grid-frame"><div className="tech-grid">{technologies.map(t => <div className="tech-item" key={t.title}><t.icon strokeWidth={1.6} aria-hidden="true" /><div><h3>{t.title}</h3><p>{t.text}</p></div></div>)}</div></div></div></section>
       <section className="section section-solution" id="implementacion"><div className="site-container"><div className="section-heading"><div><div className="eyebrow">07 / Plan de implementación</div><h2>Empezar cerca.<br /><em>Llegar a toda la provincia.</em></h2></div><p>Un despliegue gradual, con resultados concretos desde la primera etapa y acompañamiento en cada paso.</p></div><div className="grid-frame alt"><div className="three-grid"><article className="feature-card"><div className="phase-label">Etapa 01</div><h3>Piloto en Posadas</h3><p>Registro y presentación de proyectos con las cooperativas escolares de Posadas. Listo para abrir la convocatoria 2027.</p><span className="phase-tag">30–45 días</span></article><article className="feature-card"><div className="phase-label">Etapa 02</div><h3>Despliegue provincial</h3><p>Evaluación, adjudicación y alta de todas las cooperativas escolares de Misiones. Un proceso común para toda la provincia.</p><span className="phase-tag">Cobertura provincial</span></article><article className="feature-card"><div className="phase-label">Etapa 03</div><h3>Rendición y tablero</h3><p>Módulo de rendición de cuentas, tablero ministerial y capacitación a docentes asesores para consolidar el uso de la plataforma.</p><span className="phase-tag">Gestión de punta a punta</span></article></div></div></div></section>
       <section className="section contact-section" id="contacto"><div className="site-container"><div className="contact-card grid-frame alt">
-        <div><div className="eyebrow">08 / Conversemos</div><h2>Hagamos que el CoopBono 2027 <em>llegue a cada escuela.</em></h2><p className="section-description">Conversemos sobre los próximos pasos y construyamos juntos una solución para Misiones.</p><div className="contact-cta"><Button asChild size="proposal"><a href={`mailto:${EMAIL}?subject=${MAIL_SUBJECT}`}>Coordinar una reunión <ArrowRight /></a></Button></div></div>
+        <div><div className="eyebrow">08 / Conversemos</div><h2>Hagamos que el CoopBono 2027 <em>llegue a cada escuela.</em></h2><p className="section-description">Conversemos sobre los próximos pasos y construyamos juntos una solución para Misiones.</p><div className="contact-cta"><ContactDialog><Button size="proposal">Coordinar una reunión <ArrowRight /></Button></ContactDialog></div></div>
         <ul className="contact-details">
           <li><a href={`mailto:${EMAIL}`}><Mail size={22} aria-hidden="true" /><span><small>Correo</small>{EMAIL}</span></a></li>
           <li><a href={SITE_URL} target="_blank" rel="noreferrer"><Globe size={22} aria-hidden="true" /><span><small>Sitio web</small>{SITE_LABEL}</span></a></li>
